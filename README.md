@@ -36,6 +36,8 @@
 - 数学推导：[`docs/math.md`](https://github.com/Wang-xinyu-2007/tiny-char-transformer/blob/main/docs/math.md)
 - 训练曲线与样本在仓库的 `results/` 下
 
+<img src="https://raw.githubusercontent.com/Wang-xinyu-2007/tiny-char-transformer/main/results/loss_curve.png" width="620" alt="Tiny Char Transformer 训练与验证损失曲线">
+
 ### [linreg-lab](https://github.com/Wang-xinyu-2007/linreg-lab)
 
 用 NumPy 从零手写线性回归的五关练习：向量化预测、损失与梯度、正规方程、梯度下降、标准化与 R²。每关都有测试验收。
