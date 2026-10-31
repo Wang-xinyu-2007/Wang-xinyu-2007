@@ -32,7 +32,9 @@
 
 - 818K 参数，4 层 / 4 头 / 128 维，在 Tiny Shakespeare 上 CPU 训练 3,000 步（约 16 分钟）
 - 最佳验证损失 **1.8988**（困惑度 **6.68**，随机基线为 65）；1,200 步基线为 2.2156
-- 11 个单元测试，包括“未来 token 不能影响前缀 logits”的因果泄漏测试
+- **KV cache** 增量解码：96 个 token 的 CPU 基准为 **1.31×** 加速，cached / uncached greedy 输出一致
+- **深度 ablation**：同样 1,500 步，2 层 val loss 2.2799，4 层 2.0316
+- 17 个单元测试，包括因果泄漏和 KV cache 一致性测试
 - 数学推导：[`docs/math.md`](https://github.com/Wang-xinyu-2007/tiny-char-transformer/blob/main/docs/math.md)
 - 训练曲线与样本在仓库的 `results/` 下
 
@@ -41,6 +43,14 @@
 ### [linreg-lab](https://github.com/Wang-xinyu-2007/linreg-lab)
 
 用 NumPy 从零手写线性回归的五关练习：向量化预测、损失与梯度、正规方程、梯度下降、标准化与 R²。每关都有测试验收。
+
+### [changchun-housing](https://github.com/Wang-xinyu-2007/changchun-housing)
+
+国家统计局 70 城房价指数的真实数据分析：48 个月、70 个城市、2 个市场，NBS HTML 抓取 + 校验 + SQLite + 5 条 SQL + 自动图表/报告。
+
+- 增量更新 + GitHub Actions 每月自动检查；NBS 页面改版时失败而不是写入脏数据
+- 20 个离线测试（含 HTML fixture、SQL 执行、数据完整性）
+- 报告：[`reports/report.md`](https://github.com/Wang-xinyu-2007/changchun-housing/blob/main/reports/report.md)
 
 ### 工程基本功
 
@@ -58,14 +68,15 @@ Language     Python · C
 ML           PyTorch · NumPy · Transformer / 注意力机制
 Data         pandas · SQL / SQLite
 Engineering  pytest · Git · GitHub Actions · CLI 设计
-Learning     BPE / tokenizer · KV cache · 优化与概率
+Learning     BPE / tokenizer · RoPE · 优化与概率
 ```
 
 ## 正在做
 
 - [x] 用一个小 Transformer 跑通“推导 → 实现 → 训练 → 评测 → 采样”
-- [ ] 给 `changchun-housing` 换真实公开数据，补上结论、baseline 与误差分析
-- [ ] 给 Transformer 加 BPE tokenizer / KV cache，并做位置编码与深度 ablation
+- [x] 把 `changchun-housing` 换成国家统计局真实数据，并接入 GitHub Actions 月度自动更新
+- [x] 给 Transformer 加 KV cache 增量解码，并做 2 层 vs 4 层深度 ablation
+- [ ] 给 Transformer 加 BPE tokenizer / RoPE，并做更多 seed 的稳定性实验
 - [ ] 参与一个开源 ML 项目（从测试、文档或小 bug 开始）
 
 > 我相信作品比标签更有说服力：一个小而完整、能被追问的项目，胜过十个教程复刻。
