@@ -46,7 +46,7 @@
 
 ### [changchun-housing](https://github.com/Wang-xinyu-2007/changchun-housing)
 
-国家统计局 70 城房价指数的真实数据分析：48 个月、70 个城市、2 个市场，NBS HTML 抓取 + 校验 + SQLite + 5 条 SQL + 自动图表/报告。
+国家统计局 70 城房价指数的真实数据分析：截至 2026-09，48 个月、70 个城市、2 个市场；NBS HTML 抓取 + 校验 + SQLite + 5 条 SQL + 自动图表/报告。
 
 - 增量更新 + GitHub Actions 每月自动检查；NBS 页面改版时失败而不是写入脏数据
 - 20 个离线测试（含 HTML fixture、SQL 执行、数据完整性）
